@@ -61,6 +61,10 @@ public class MainController implements ActionListener{
         window.getGrapher().addController(gc);
         
         
+        
+        
+        
+   
     }
                     
 

@@ -35,6 +35,16 @@ public class Grapher extends JPanel{
 
         super.paintComponent(g);
         
+        
+        /*
+        
+        
+        
+        Here goes code for painting charges
+
+
+        */
+        
         setOpaque(false);
 
     }   
