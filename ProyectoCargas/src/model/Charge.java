@@ -16,14 +16,15 @@ public class Charge {
     private double value;
     
     
-    Charge(double v){
+    public Charge(double v){
         
         this.x = 0;
         this.y = 0;
         this.value = v;      
     }   
     
-    Charge(double x, double y, double v){
+    
+    public Charge(double x, double y, double v){
         
         this.x = x;
         this.y = y;    
@@ -40,6 +41,9 @@ public class Charge {
     
     public double getVal(){       
         return value;     
+        
+        
+        
     }
     
     

@@ -6,8 +6,11 @@
 package view;
 
 import control.GraphicsController;
+import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Point;
 import javax.swing.JPanel;
+import model.Charge;
 
 /**
  *
@@ -22,6 +25,7 @@ public class Grapher extends JPanel{
     Grapher(MainFrame win){
         
         this.win = win;
+        this.setOpaque(false);
     }
     
     public void addController(GraphicsController g){
@@ -35,17 +39,31 @@ public class Grapher extends JPanel{
 
         super.paintComponent(g);
         
-        
-        /*
-        
-        
-        
-        Here goes code for painting charges
 
-
-        */
+        for (Charge c : this.g.getList()){
         
-        setOpaque(false);
+            
+            int c_rad = 10; //Radius of the charges
+            
+            //IT DOESNT TAKE INTO ACCOUNT CHARGES EQUAL TO 0, which shouldn't exist to begin with
+            if (c.getVal() > 0 ){
+                
+                g.setColor(Color.red);
+            }else{
+                
+                g.setColor(Color.blue);   
+            }
+            
+            if (c.getVal()!= 0){
+                
+                g.fillOval((int)(win.getW()/2 + (c.getX()*this.g.getScale()) - c_rad ), 
+                        (int)(win.getH()/2 + (c.getY()*this.g.getScale()) - c_rad ), 
+                        c_rad*2, c_rad*2);
+            
+            }
+        }
+            
+
 
     }   
 

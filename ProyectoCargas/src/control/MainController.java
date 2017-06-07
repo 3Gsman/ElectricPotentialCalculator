@@ -10,9 +10,12 @@ package control;
  * @author Daniel
  */
 
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JInternalFrame;
+import javax.swing.JPanel;
+import model.Charge;
 import view.*;
 
 
@@ -22,6 +25,8 @@ import view.*;
  */
 public class MainController implements ActionListener{
 
+    
+    public final static int PIXELRATIO = 40;
     
     //Here we store the mainFrame window, from which all others branch
     MainFrame win;
@@ -42,6 +47,8 @@ public class MainController implements ActionListener{
     public final static String C_SAVE = "S";    //Open the file saver
     public final static String C_WIPE = "W";    //Use the "Wipe Board" function  
     public final static String C_NEW = "N";     //Open the "New Charge" prompt
+    public final static String C_ZI = "I";      //Zoom in
+    public final static String C_ZO = "O";      //Zoom out
     
     
     /*The application code. It's only meant to create the main window and 
@@ -54,15 +61,13 @@ public class MainController implements ActionListener{
         window.create();
         
         GraphicsController gc = new GraphicsController(
-            window.getGrid(), window.getGrapher());
+        window.getGrid(), window.getGrapher());
         c.addController(gc);
         
         window.getGrid().addController(gc);
         window.getGrapher().addController(gc);
         
-        
-        
-        
+        c.testCharge();
         
    
     }
@@ -88,7 +93,11 @@ public class MainController implements ActionListener{
         
         //Open the "Calculations" frame
         if (e.getActionCommand().equals(C_CALC)){
-        
+               
+               
+                //TEMPORARY IMPLEMENTATION OF TESTING INTERNALFRAMES
+                testFrame();
+                
             System.out.println("Unimplemented");
             
         }
@@ -124,7 +133,9 @@ public class MainController implements ActionListener{
         //Use the "Wipe Board" function 
         if (e.getActionCommand().equals(C_WIPE)){
             
-            System.out.println("Unimplemented");
+            
+          g.wipeList();
+          g.getGrapher().repaint();
    
         }  
         
@@ -133,11 +144,51 @@ public class MainController implements ActionListener{
             
             System.out.println("Unimplemented");
    
-        }             
+        } 
+        
+        if (e.getActionCommand().equals(C_ZI)){
+            
+            g.setScale(true);
+   
+        }
+        
+        if (e.getActionCommand().equals(C_ZO)){
+            
+            g.setScale(false);
+   
+        }    
 
     }   
+
+    
+    
+    
+    //This function creates an internalFrame and adds it, to test that
+    //internalframes are working properly
+    private void testFrame() {
+                JInternalFrame intf = new JInternalFrame("Ventana",true,true,true,true);
+                intf.setPreferredSize(new Dimension(800, 640));
+                intf.setLocation(win.getWidth()/2-400, win.getHeight()/2-320);
+                intf.setSize(intf.getPreferredSize());
+                intf.setVisible(true);
+                win.addFrame(intf);
+    }
      
     
+    
+    private void testCharge(){
+        
+        Charge c1 = new Charge(6,5,30);
+        Charge c2 = new Charge((double)-20);
+        Charge c3 = new Charge(-4,-2.5,40);
+        Charge c4 = new Charge(-8,3.6,40);
+        
+        g.addCharge(c1);
+        g.addCharge(c2);
+        g.addCharge(c3);
+        g.addCharge(c4);
+        
+    }
 }
         
     
