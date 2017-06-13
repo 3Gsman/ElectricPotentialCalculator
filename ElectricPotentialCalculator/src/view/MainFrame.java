@@ -185,7 +185,7 @@ public class MainFrame extends JFrame {
         
         
         private void setIcon() {
-        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/img/chargeLogo.png")));       
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/img/charge.jpg")));       
             
         }
         

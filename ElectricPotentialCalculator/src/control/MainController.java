@@ -16,7 +16,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
-import javax.swing.JInternalFrame; 
+import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
 import model.Charge;
 import view.*;
@@ -117,13 +117,8 @@ public class MainController implements ActionListener{
         //Open the "Help" frame
         if (e.getActionCommand().equals(C_HELP)){
             
-                HelpFrame k = new HelpFrame();
-                HelpController hel = new HelpController(k);
-                k.addController(hel);
-                k.crearVista();
-                hel.showText();
-                win.addFrame(k);
-                
+            System.out.println("Unimplemented");
+   
         }
         
         //Open the "Add File" chooser

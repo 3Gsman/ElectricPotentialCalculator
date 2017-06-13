@@ -36,13 +36,13 @@ public class CalcController implements ActionListener{
         final double K = -9;  // Simplified constant. Real constant: -9 * 10^9.
 
         double total = 0;
-        double d = 0;
+
         // Calculate the potential
         for (Charge c : MainController.getList()) {
 
             double x = p.x- c.getX();
             double y = p.y - c.getY();
-            d = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
+            double d = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
             double r = (c.getVal() * K / d);
             total = (total + r);
 
@@ -50,13 +50,9 @@ public class CalcController implements ActionListener{
         }
 
         total = Math.floor(total * 100) / 100;
+        win.result.setText("Result: " + total + " · 10^3 V");
+              
         
-        if (total == 0){
-           win.fieldresult.setText(" 0 V"); 
-       
-        }else{  
-            win.fieldresult.setText( total + " · 10^3 V");
 
-        }   
     }
 }
