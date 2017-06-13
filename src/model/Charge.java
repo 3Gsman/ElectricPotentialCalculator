@@ -42,9 +42,12 @@ public class Charge {
     public double getVal(){       
         return value;     
         
-        
-        
     }
+    
+    public void setVal(double v){       
+        this.value = v;          
+    }
+    
     
     
 }

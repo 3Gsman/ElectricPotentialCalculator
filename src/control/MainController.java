@@ -16,7 +16,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
-import javax.swing.JInternalFrame;
+import javax.swing.JInternalFrame; 
 import javax.swing.JPanel;
 import model.Charge;
 import view.*;
@@ -117,8 +117,13 @@ public class MainController implements ActionListener{
         //Open the "Help" frame
         if (e.getActionCommand().equals(C_HELP)){
             
-            System.out.println("Unimplemented");
-   
+                HelpFrame k = new HelpFrame();
+                HelpController hel = new HelpController(k);
+                k.addController(hel);
+                k.crearVista();
+                hel.showText();
+                win.addFrame(k);
+                
         }
         
         //Open the "Add File" chooser
@@ -154,7 +159,11 @@ public class MainController implements ActionListener{
         //Open the "New Charge" prompt
         if (e.getActionCommand().equals(C_NEW)){
             
-            System.out.println("Unimplemented");
+            AddChargeFrame j = new AddChargeFrame();
+            AddChargeController cal = new AddChargeController(j);
+            j.addController(cal);
+            j.crearVista();
+            win.addFrame(j);
    
         } 
         
