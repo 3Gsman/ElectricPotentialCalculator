@@ -38,19 +38,18 @@ public class Grid extends JPanel {
         super.paintComponent(g);
         
        
-        //X Axis marks
+        //X and Y Axis marks
         for (int i = MainController.PIXELRATIO; (i + MainController.PIXELRATIO) <= win.getW() ; i += MainController.PIXELRATIO){
             
             g.drawLine(i, win.getH()/2+10, i, win.getH()/2-10);
+            g.drawLine(win.getW()/2+10, i , win.getW()/2-10, i);
             
         }   
         
         //Y Axis marks
-        for (int i = 0 + ((win.getH()-win.getW())/2); (i + gra.getScale()) <= win.getH() ; i += MainController.PIXELRATIO){
+        /*for (int i = MainController.PIXELRATIO ; (i + gra.getScale()) <= win.getH() ; i += MainController.PIXELRATIO){
             
-            g.drawLine(win.getW()/2+10, i , win.getW()/2-10, i);
-            
-        }
+        }*/
         
 
         //Axis
@@ -66,9 +65,7 @@ public class Grid extends JPanel {
         System.out.println(MainController.PIXELRATIO);
         System.out.println((double)MainController.PIXELRATIO/(double)this.gra.getScale());
         r = (double)MainController.PIXELRATIO/(double)this.gra.getScale();       
-        r = Math.floor(r * 100) / 100;
-        System.out.println(r);
-        
+        r = Math.floor(r * 100) / 100;       
            
         if (r%1 == 0){
             

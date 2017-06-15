@@ -1,10 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
+import control.AddChargeController;
 import control.CalcController;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
@@ -24,7 +20,7 @@ import javax.swing.JButton;
  *
  * @author Pablo
  */
-public final class CalcFrame extends JInternalFrame {
+public final class AddChargeFrame extends JInternalFrame {
  
     private static final long serialVersionUID = 1L;
    
@@ -32,12 +28,12 @@ public final class CalcFrame extends JInternalFrame {
     double y = 0;
     public JFormattedTextField fieldx;
     public JFormattedTextField fieldy;
-    public JFormattedTextField fieldresult;
+    public JFormattedTextField fieldvalue;
     public JLabel result;
-    CalcController c;
+    AddChargeController c;
    
-    public CalcFrame(){
-       super("Calculate Potential",false,true,false);
+    public AddChargeFrame(){
+       super("Add Charges",false,true,false);
        setDefaultCloseOperation(JInternalFrame.DISPOSE_ON_CLOSE);
     }
    
@@ -55,7 +51,7 @@ public final class CalcFrame extends JInternalFrame {
        panel.setSize(450,300);
        panel.setLocation(0,0);
        panel.setLayout(null);
-       JButton boton1 = new JButton("Calculate");
+       JButton boton1 = new JButton("Add Charge");
        boton1.addActionListener(c);
        
        fieldx = new JFormattedTextField(x);
@@ -73,7 +69,7 @@ public final class CalcFrame extends JInternalFrame {
                                  fieldy.setText("");
                                  }
                         });
-       fieldresult = new JFormattedTextField(x);
+       fieldvalue = new JFormattedTextField(x);
                      fieldy.setValue(y);
                      fieldy.addMouseListener(new MouseAdapter() {
                      public void mouseClicked(MouseEvent e) {
@@ -83,9 +79,9 @@ public final class CalcFrame extends JInternalFrame {
                      
        
        
-       JLabel lbl1 = new JLabel("Position X");
-       JLabel lbl2 = new JLabel("Position Y");
-       JLabel lbl3 = new JLabel("Result");
+       JLabel lbl1 = new JLabel("X Position");
+       JLabel lbl2 = new JLabel("Y Position");
+       JLabel lbl3 = new JLabel("Value");
        
        Font font = new Font("SanSerif",Font.PLAIN,15);  
            
@@ -99,14 +95,14 @@ public final class CalcFrame extends JInternalFrame {
        
        fieldx.setBounds(210,20,100,30);
        fieldy.setBounds(210,60,100,30);
-       fieldresult.setBounds(210,105,100,30);
+       fieldvalue.setBounds(210,105,100,30);
        boton1.setBounds(170,160,100,30);
        
        //Aqui simplemente los añado al panel
        panel.add(boton1);
        panel.add(fieldx);
        panel.add(fieldy);
-       panel.add(fieldresult);
+       panel.add(fieldvalue);
        panel.add(lbl1);
        panel.add(lbl2);
        panel.add(lbl3);
@@ -114,7 +110,7 @@ public final class CalcFrame extends JInternalFrame {
    }
  
    
-   public void addController(CalcController a){
+   public void addController(AddChargeController a){
        
        this.c = a;
        
