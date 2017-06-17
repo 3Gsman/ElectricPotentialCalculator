@@ -28,7 +28,7 @@ public class CalcController implements ActionListener {
     /**
      * Convert the data given in the view.CalcFrame to variables that could be 
      * used in the equation.
-     * @param totsl 
+     * @param e 
      */
     public void actionPerformed(ActionEvent e) {
 
