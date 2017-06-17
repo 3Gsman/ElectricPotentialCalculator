@@ -18,7 +18,7 @@ import javax.swing.JButton;
 /**
  * @author ALTF4
  * @version IQ
- * This class basically displays a window in which the user can add a charge to the graph on the mainFrame
+ * This class displays a window in which the user can add a charge to the graph on the mainFrame
  */
 public final class AddChargeFrame extends JInternalFrame {
  
@@ -26,7 +26,6 @@ public final class AddChargeFrame extends JInternalFrame {
    
     NumberFormat x;
     double y = 0;
-    double z = 1;
     public JFormattedTextField fieldx;
     public JFormattedTextField fieldy;
     public JFormattedTextField fieldvalue;
@@ -39,7 +38,8 @@ public final class AddChargeFrame extends JInternalFrame {
     }
    
       /**
-     *  This method basically displays the window with its components.
+     *  This method displays the window with its components.
+     *  @param Nothing
      */
    public void crearVista(){
       /*Here we give the window its size, initial position and visibility to the InternalFrame.
@@ -74,10 +74,10 @@ public final class AddChargeFrame extends JInternalFrame {
                                  }
                         });
        fieldvalue = new JFormattedTextField(x);
-                     fieldvalue.setValue(z);
-                     fieldvalue.addMouseListener(new MouseAdapter() {
+                     fieldy.setValue(y);
+                     fieldy.addMouseListener(new MouseAdapter() {
                      public void mouseClicked(MouseEvent e) {
-                                 fieldvalue.setText("");
+                                 fieldy.setText("");
                                  }
                         });             
                      
@@ -86,19 +86,16 @@ public final class AddChargeFrame extends JInternalFrame {
        JLabel lbl1 = new JLabel("X Position");
        JLabel lbl2 = new JLabel("Y Position");
        JLabel lbl3 = new JLabel("Value");
-       JLabel unit = new JLabel("uC");
        
        Font font = new Font("SanSerif",Font.PLAIN,15);  
            
        lbl1.setFont(font);
        lbl2.setFont(font);
        lbl3.setFont(font);
-       unit.setFont(font);
        
        lbl1.setBounds(130,20,85,30);
        lbl2.setBounds(130,60,85,30);
        lbl3.setBounds(140,105,85,30);
-       unit.setBounds(315,105,85,30);
        
        fieldx.setBounds(210,20,100,30);
        fieldy.setBounds(210,60,100,30);
@@ -113,7 +110,6 @@ public final class AddChargeFrame extends JInternalFrame {
        panel.add(lbl1);
        panel.add(lbl2);
        panel.add(lbl3);
-       panel.add(unit);
        this.add(panel);
    }
  

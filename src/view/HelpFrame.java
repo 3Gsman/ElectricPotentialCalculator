@@ -21,12 +21,16 @@ public final class HelpFrame extends JInternalFrame {
     public JPanel panel;
     HelpController c;
 
+    /**
+     *  This is the class´s constructor, and its features are it´s name, non resizable, closable and non maximizable
+     */
     public HelpFrame() {
         super("User Manual", false, true, false);
     }
     
      /**
-     *  This method basically displays the window with its components.
+     *  This method displays the window with its components.
+     *  @param Nothing
      */
     public void crearVista() {
         /*Here we give the window its size, initial position and visibility to the InternalFrame.

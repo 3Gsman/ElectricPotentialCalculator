@@ -19,7 +19,7 @@ import javax.swing.JButton;
  *  @author ALTF4
  *  @version 1
  *  @see MainController MainFrame
- *  This class basically displays a window to calculate the electric potential.
+ *  This class displays a window to calculate the electric potential.
  */
 public final class CalcFrame extends JInternalFrame {
  
@@ -35,7 +35,7 @@ public final class CalcFrame extends JInternalFrame {
    
     /**
      *  This is the class´s contstructor; its features are: Non resizable , closable and non maximizable.
-     * 
+     *  @param Nothing
      */
     public CalcFrame(){
        super("Calculate Potential",false,true,false);
@@ -43,7 +43,8 @@ public final class CalcFrame extends JInternalFrame {
     }
    
     /**
-     *  This method basically displays the window with its components.
+     *  This method displays the window with its components.
+     *  @param Nothing
      */
    public void crearVista(){
        /*Here we give the window its size, initial position and visibility to the InternalFrame.
@@ -78,10 +79,10 @@ public final class CalcFrame extends JInternalFrame {
                                  }
                         });
        fieldresult = new JFormattedTextField(x);
-                     fieldresult.setValue("");
-                     fieldresult.addMouseListener(new MouseAdapter() {
+                     fieldy.setValue(y);
+                     fieldy.addMouseListener(new MouseAdapter() {
                      public void mouseClicked(MouseEvent e) {
-                                 fieldresult.setText("");
+                                 fieldy.setText("");
                                  }
                         });             
                      
