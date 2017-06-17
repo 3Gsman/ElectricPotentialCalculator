@@ -29,7 +29,8 @@ public class HelpController {
 
     }
     /**
-     * Assign the .txt that is going to be used in the HelpFrame textArea 
+     *Assign the .txt that is going to be used in the HelpFrame textArea 
+     *@param nothing  
      */
     public void showText() {
 
