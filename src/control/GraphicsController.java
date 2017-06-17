@@ -72,9 +72,9 @@ public class GraphicsController implements ActionListener,MouseWheelListener {
         return scale;
     }
         
-    public int getRatio(){
+    public double getRatio(){
         
-        return scale;
+        return ratio;
     }
     
     public Point getPoint(){
@@ -90,20 +90,23 @@ public class GraphicsController implements ActionListener,MouseWheelListener {
     public void setScale(boolean add){
         
         if (add){
-
-            ratio = ratio / zm_ch;
-            scale = (int)ratio;
-            //Repaint the components using a scale
-            gri.repaint();
-            gra.repaint();
+            if(scale != 2560){
+                ratio = ratio / zm_ch;
+                scale = (int)ratio;
+                //Repaint the components using a scale
+                gri.repaint();
+                gra.repaint();
+            }
         }
         
         else{
-            ratio = ratio * zm_ch;
-            scale = (int)ratio;
-            //Repaint the components using a scale
-            gri.repaint();
-            gra.repaint();
+            if(scale != 1){
+                ratio = ratio * zm_ch;
+                scale = (int)ratio;
+                //Repaint the components using a scale
+                gri.repaint();
+                gra.repaint();
+            }
         }    
     }
    

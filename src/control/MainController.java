@@ -16,7 +16,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
-import javax.swing.JInternalFrame;
+import java.util.Iterator;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JInternalFrame; 
 import javax.swing.JPanel;
 import model.Charge;
 import view.*;
@@ -32,7 +35,7 @@ public class MainController implements ActionListener{
     public final static int PIXELRATIO = 40;
     
     //Here we store the mainFrame window, from which all others branch
-    MainFrame win;
+    private MainFrame win;
     private GraphicsController g;
     private static ArrayList<Charge> list = new ArrayList<>();
     private static Point2D.Double p = new Point2D.Double();
@@ -117,28 +120,55 @@ public class MainController implements ActionListener{
         //Open the "Help" frame
         if (e.getActionCommand().equals(C_HELP)){
             
-            System.out.println("Unimplemented");
-   
+                HelpFrame k = new HelpFrame();
+                HelpController hel = new HelpController(k);
+                k.addController(hel);
+                k.crearVista();
+                hel.showText();
+                win.addFrame(k);
+                
         }
         
         //Open the "Add File" chooser
         if (e.getActionCommand().equals(C_ADD)){
             
-            System.out.println("Unimplemented");
+            XMLChooser fc = new XMLChooser(); 
+            
+            
+            if (fc.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+                
+                System.out.println("Selected File: " + fc.getSelectedFile());
+                XMLIO.addCharges(fc.getSelectedFile());
+                win.repaint();
+            } else {
+                    
+                System.out.println("Aborted without selection");
+            }
    
         }    
         
         //Open the "Load" chooser
         if (e.getActionCommand().equals(C_LOAD)){
             
-            System.out.println("Unimplemented");
+            XMLChooser fc = new XMLChooser(); 
+            
+            
+            if (fc.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+                
+                System.out.println("Selected File: " + fc.getSelectedFile());
+                XMLIO.loadCharges(fc.getSelectedFile());
+                win.repaint();
+            } else {
+                    
+                System.out.println("Aborted without selection");
+            }
    
         }   
         
         //Open the file saver
         if (e.getActionCommand().equals(C_SAVE)){
             
-            System.out.println("Unimplemented");
+            XMLIO.saveCharges();
    
         }   
        
@@ -147,14 +177,18 @@ public class MainController implements ActionListener{
             
             
           wipeList();
-          g.getGrapher().repaint();
+          win.repaint();
    
         }  
         
         //Open the "New Charge" prompt
         if (e.getActionCommand().equals(C_NEW)){
             
-            System.out.println("Unimplemented");
+            AddChargeFrame j = new AddChargeFrame();
+            AddChargeController cal = new AddChargeController(j,this);
+            j.addController(cal);
+            j.crearVista();
+            win.addFrame(j);
    
         } 
         
@@ -189,17 +223,55 @@ public class MainController implements ActionListener{
     //Add charges, arrays, or wipe the list
     
     public static void addCharge(Charge c){
-            
-        list.add(c);
+        
+        if (chargeSanityCheck(c)){
+               
+            list.add(c);
+        }
+
     }
     
-    public static void addCharge(ArrayList<Charge> c){
-            
-        for (Charge ch : c){
-            
-            list.add(ch);
+    public static void addCharge(ArrayList<Charge> cl){
+        
+
+        for (Charge c : cl){
+           
+           if (chargeSanityCheck(c)){
+               
+               list.add(c);
+           }
         }
+        
     }
+    
+    static private boolean chargeSanityCheck(Charge c){
+        
+            boolean sane = true;
+        
+        //Check if another charge is in the same position
+            for (Iterator<Charge> it = MainController.getList().iterator(); it.hasNext();) {
+                Charge ch = it.next();
+                if(c.getX() == ch.getX() &&
+                        c.getY() == ch.getY()){
+
+                    ch.setVal( ch.getVal() + c.getVal() );
+                    sane = false;
+                }
+                if (c.getVal() == 0){
+
+                    MainController.getList().remove(it);
+                }
+            }
+            if(sane){
+                return true;
+            }
+            else{
+                return false;
+            }
+        
+    }
+    
+    
     
     public static void wipeList(){
         
@@ -211,6 +283,17 @@ public class MainController implements ActionListener{
         
         return list;
     }
+    
+    public MainFrame getWindow(){
+        
+        return win;
+    }
+    
+    public void setWindow(MainFrame f){
+        
+        win = f;
+    }
+    
     
     
     //This function creates an internalFrame and adds it, to test that
