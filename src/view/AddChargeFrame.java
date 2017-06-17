@@ -1,7 +1,6 @@
-
 package view;
 
-import control.CalcController;
+import control.AddChargeController;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
  
@@ -15,13 +14,13 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JPanel;
 import javax.swing.JButton;
  
+ 
 /**
- *  @author ALTF4
- *  @version 1
- *  @see MainController MainFrame
- *  This class basically displays a window to calculate the electric potential.
+ * @author ALTF4
+ * @version IQ
+ * This class basically displays a window in which the user can add a charge to the graph on the mainFrame
  */
-public final class CalcFrame extends JInternalFrame {
+public final class AddChargeFrame extends JInternalFrame {
  
     private static final long serialVersionUID = 1L;
    
@@ -29,24 +28,20 @@ public final class CalcFrame extends JInternalFrame {
     double y = 0;
     public JFormattedTextField fieldx;
     public JFormattedTextField fieldy;
-    public JFormattedTextField fieldresult;
+    public JFormattedTextField fieldvalue;
     public JLabel result;
-    CalcController c;
+    AddChargeController c;
    
-    /**
-     *  This is the class´s contstructor; its features are: Non resizable , closable and non maximizable.
-     * 
-     */
-    public CalcFrame(){
-       super("Calculate Potential",false,true,false);
+    public AddChargeFrame(){
+       super("Add Charges",false,true,false);
        setDefaultCloseOperation(JInternalFrame.DISPOSE_ON_CLOSE);
     }
    
-    /**
+      /**
      *  This method basically displays the window with its components.
      */
    public void crearVista(){
-       /*Here we give the window its size, initial position and visibility to the InternalFrame.
+      /*Here we give the window its size, initial position and visibility to the InternalFrame.
          Keep in mind: InternalFrames work better with the setPreferredSize command.
        */
        this.setPreferredSize(new Dimension(450, 250));
@@ -59,7 +54,7 @@ public final class CalcFrame extends JInternalFrame {
        panel.setSize(450,300);
        panel.setLocation(0,0);
        panel.setLayout(null);
-       JButton boton1 = new JButton("Calculate");
+       JButton boton1 = new JButton("Add Charge");
        boton1.addActionListener(c);
        
        fieldx = new JFormattedTextField(x);
@@ -77,7 +72,7 @@ public final class CalcFrame extends JInternalFrame {
                                  fieldy.setText("");
                                  }
                         });
-       fieldresult = new JFormattedTextField(x);
+       fieldvalue = new JFormattedTextField(x);
                      fieldy.setValue(y);
                      fieldy.addMouseListener(new MouseAdapter() {
                      public void mouseClicked(MouseEvent e) {
@@ -87,9 +82,9 @@ public final class CalcFrame extends JInternalFrame {
                      
        
        
-       JLabel lbl1 = new JLabel("Position X");
-       JLabel lbl2 = new JLabel("Position Y");
-       JLabel lbl3 = new JLabel("Result");
+       JLabel lbl1 = new JLabel("X Position");
+       JLabel lbl2 = new JLabel("Y Position");
+       JLabel lbl3 = new JLabel("Value");
        
        Font font = new Font("SanSerif",Font.PLAIN,15);  
            
@@ -103,25 +98,26 @@ public final class CalcFrame extends JInternalFrame {
        
        fieldx.setBounds(210,20,100,30);
        fieldy.setBounds(210,60,100,30);
-       fieldresult.setBounds(210,105,100,30);
+       fieldvalue.setBounds(210,105,100,30);
        boton1.setBounds(170,160,100,30);
        
-       //Here we simply add the components to the panel
+       //Here we just add the component to the panel
        panel.add(boton1);
        panel.add(fieldx);
        panel.add(fieldy);
-       panel.add(fieldresult);
+       panel.add(fieldvalue);
        panel.add(lbl1);
        panel.add(lbl2);
        panel.add(lbl3);
        this.add(panel);
    }
  
-   /**
-    * This method is used on the mainFrame to add its respective controller
-    * @param a 
-    */
-   public void addController(CalcController a){
+       
+    /**
+     * This method is used on the mainFrame to add its respective controller
+     * @param a 
+     */
+   public void addController(AddChargeController a){
        
        this.c = a;
        
