@@ -1,0 +1,48 @@
+﻿ Welcome to the Electric Charge Calculator:
+ This program basically allowes the user to add charges to a graph in order 
+ to calculate the electric potential on the desired point.
+ --------------------------------------------------------------------------
+ In order to do so, we have a couple tools that will help us throughout our
+ way, but first lets explain how does the main frame work.
+ On the top left corner of the frame we have a menubar in which we have 
+ two options: File and tools.
+ Then we have our graph that will constantly remain visible for the user 
+ to keep track on the charges that will be added to the graph.
+
+ After going through a quick review of the main frame, lets explain how 
+ to use the tools we mentioned before.
+ First, we are going to introduce the "File" features:
+
+ 1.- New charge: the "New charge" button will display a window in which 
+     the user is able to add charges by introducing their "X" and "Y" 
+     position and their value (you can choose between positive, "+"
+     and negative "-")
+ 2.- Load: the "Load" button will display a file chooser window in which
+     the user is able to select a preloaded file with some charges or 
+     just load one of the previous files he has saved.
+ 3.- Save: the "Save" button it´s basically a feature of the program that
+     allowes the user to save his files in order to load them later.
+
+ Finally, we will explain the "Tools" features:
+
+ 1.- Calculate: the "Calculate" button shows a frame in which the user is 
+     able to calculate the electric potential. To do that the user is
+     asked to fill in 2 blanks; the "X position" blank and the "Y position"
+     blank. This will be the exact position where the electric potential
+     of the charges that are currently displayed on the graph will be 
+     calculated.
+ 2.- Help: the "Help" button shows the window you are currently looking at.
+     (Cmon u should know that... haha)
+ 3.- Zoom: Finally the last feature this program offers is an option to change
+     the graph´s scale by zooming in and out. The user can do that by clicking
+     the "Zoom in" or "Zoom out" that are found on the Tools menu.
+     (Since the 0.3 version you are also able to zoom in and out by using the 
+      mouse wheel).
+ ----------------------------------------------------------------------------
+
+ Thanks for reading the Electric Charge Calculator´s user manual, if you find
+ any bugs or you have any ideas that could improve the program please contact
+ the development staff.
+
+ This program was developed by: Daniel Vilar Seoane, German García García,
+ Adriana Marchena García and Pablo Ferrer López

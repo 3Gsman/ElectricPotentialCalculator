@@ -58,7 +58,7 @@ public class Grapher extends JPanel{
             if (c.getVal()!= 0){
                 
                 g.fillOval((int)(win.getW()/2 + (c.getX()*this.g.getScale()) - c_rad ), 
-                        (int)(win.getH()/2 + (c.getY()*this.g.getScale()) - c_rad ), 
+                        (int)(win.getH()/2 + (-1 * c.getY()*this.g.getScale()) - c_rad ), 
                         c_rad*2, c_rad*2);
             
             }
