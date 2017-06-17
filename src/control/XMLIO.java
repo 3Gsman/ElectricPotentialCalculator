@@ -15,9 +15,11 @@ import java.util.logging.Logger;
 import model.Charge;
 
 /**
- *
- * @author Daniel
- *
+ * Provide methods to save data as XML files
+ * 
+ * @author ALTF4
+ * @version 1.2
+ * @see view.XMLChooser, MainController
  */
 public class XMLIO {
     
@@ -28,6 +30,13 @@ public class XMLIO {
     /* These three methods save, load, and add charges to the array in
     MainController, receiving as parameter the location where they will be saved,
     using the external library xstream*/
+    
+    /**
+    * Save the charge ArrayList in MainController as an XML file.
+    * 
+    * @param File f
+    * @return nothing
+    */
     public static void saveCharges(File f) {
         
         ArrayList<Charge> charges = MainController.getList();
@@ -44,9 +53,14 @@ public class XMLIO {
     }
     
     
-    /*Overwite Test File*/
     
-        public static void saveCharges() {
+    /**
+    * Save the charge ArrayList in MainController as "test.XML"
+    * 
+    * @param File f
+    * @return nothing
+    */   
+    public static void saveCharges() {
         
         ArrayList<Charge> charges = MainController.getList();
         
@@ -61,8 +75,13 @@ public class XMLIO {
         }        
     }
     
-    /*Load a file from the FileChooser and replace existing charges with it*/
-    
+    /**
+    * Load an XML file as an Arraylist, wipe the one on MainController, and 
+    * add the former to the latter.
+    * 
+    * @param File f
+    * @return nothing
+    */   
     public static void loadCharges(File f) {
         
         ArrayList<Charge> charges;
@@ -77,8 +96,12 @@ public class XMLIO {
         }      
     }
     
-    /*Add the charges of a file to the existing charges without disposing of them*/
-    
+    /**
+    * Load an XML file as an Arraylist, and add it to the one in MainController.
+    * 
+    * @param File f
+    * @return nothing
+    */  
     public static void addCharges(File f) {
         
         ArrayList<Charge> charges;

@@ -5,29 +5,25 @@
  */
 package control;
 
-/**
- *
- * @author Daniel
- */
 
-import java.awt.Dimension;
-import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.JFileChooser;
-import javax.swing.JFrame;
-import javax.swing.JInternalFrame; 
-import javax.swing.JPanel;
 import model.Charge;
 import view.*;
 
 
 /**
- *
- * @author Daniel Vilar
+ * MainController holds the main method. It handles the main data structures in
+ * the program, such as the ArrayList of charges to operate with, the menus and
+ * creation of different windows, and some constants.
+ * 
+ * @author ALTF4
+ * @version 5.5
+ * @see view.MainFrame, GraphicsController, model.Charge
  */
 public class MainController implements ActionListener{
 
@@ -59,8 +55,13 @@ public class MainController implements ActionListener{
     public final static String C_ZO = "O";      //Zoom out
     
     
-    /*The application code. It's only meant to create the main window and 
-    it's controller. The rest will be handled with user input*/
+    /**
+    * The main method. Creates the MainFrame and it's MainController, as well as
+    * the GraphicsController, Graphic, and Grid.
+    * 
+    * @param StringP[] args
+    * @return nothing
+    */
     public static void main(String[] args) {
        
         MainFrame window = new MainFrame();  
@@ -75,27 +76,51 @@ public class MainController implements ActionListener{
         window.getGrid().addController(gc);
         window.getGrapher().addController(gc);
         
-        c.testCharge();
-        
-   
+        //c.testCharge();
     }
                     
-
+    /**
+    * Construction for the class. Sets it's MainFrame.
+    * 
+    * @param MainFrame win
+    * @return nothing
+    */
     public MainController(MainFrame win){
         
         this.win = win;
 
         
     }
-    
+        
+    /**
+    * Adds a GraphicsController.
+    * 
+    * @param GraphicsController g
+    * @return nothing
+    */
     public void addController(GraphicsController g){
         
         this.g = g;
     }
     
     
-    /*IMPORTANT: When implementing a new command, be it a filechooser, or an
-    internal window, you must change the code associated with that command here.*/    
+    /**
+    * Reacts to actions on the MainFrame's JMenuBar, according to the flag set
+    * on each component.
+    * 
+    * C_CALC    Open "Calculate" window.
+    * C_HELP    Open "Help" window.
+    * C_ADD     Open XMLChooser to add an XML file.
+    * C_LOAD    Open XMLChooser to wipe the array, then add an XML file.
+    * C_SAVE    Save the current array to "test.xml"
+    * C_WIPE    Wipe the array.
+    * C_NEW     Open the "New Charge" window.
+    * C_ZI      Zooms the graph and grid in.
+    * C_ZO      Zooms the graph and grid out.
+    * 
+    * @param ActionEvent e
+    * @return nothing
+    */  
     @Override
     public void actionPerformed(ActionEvent e){
         
@@ -206,13 +231,24 @@ public class MainController implements ActionListener{
 
     }   
 
-    
+    /**
+    * Getter method for the Point in which operations will take place.
+    * 
+    * @param nothing
+    * @return Point2D.Double
+    */
     public static Point2D.Double getPoint(){
         
         return p;
         
     }
-
+    
+    /**
+    * Setter method for the Point in which operations will take place.
+    * 
+    * @param double x, double y
+    * @return nothing
+    */
     public static void setPoint(double x, double y){
         
         p.x = x;
@@ -220,8 +256,12 @@ public class MainController implements ActionListener{
     }
  
     
-    //Add charges, arrays, or wipe the list
-    
+    /**
+    * Adds a charge to the ArrayList if the sanity check equals true
+    * 
+    * @param Charge c
+    * @return nothing
+    */
     public static void addCharge(Charge c){
         
         if (chargeSanityCheck(c)){
@@ -231,6 +271,12 @@ public class MainController implements ActionListener{
 
     }
     
+    /**
+    * Adds a charge ArrayList to the ArrayList if the sanity check equals true
+    * 
+    * @param ArrayList Charge c
+    * @return nothing
+    */
     public static void addCharge(ArrayList<Charge> cl){
         
 
@@ -244,6 +290,15 @@ public class MainController implements ActionListener{
         
     }
     
+    /**
+    * Iterates the charge ArrayList to check if any charge is in the same
+    * position, or has a non-valid value. If so, it's modified or deleted, and
+    * the method returns "False". Else, it returns "True", indicating it's safe
+    * to add.
+    * 
+    * @param Charge c
+    * @return boolean
+    */
     static private boolean chargeSanityCheck(Charge c){
         
             boolean sane = true;
@@ -272,33 +327,57 @@ public class MainController implements ActionListener{
     }
     
     
-    
+    /**
+    * Deletes the contents of the charge ArrayList
+    * 
+    * @param nothing
+    * @return nothing
+    */
     public static void wipeList(){
         
         list.clear();
   
     }
-        
+    
+    /**
+    * Returns the main ArrayList
+    * 
+    * @param nothing
+    * @return ArrayList Charge list
+    */   
     public static ArrayList<Charge> getList(){
         
         return list;
     }
     
+    /**
+    * Returns the main window
+    * 
+    * @param nothing
+    * @return MainFrame win
+    */   
     public MainFrame getWindow(){
         
         return win;
     }
     
+    /**
+    * Returns the main window
+    * 
+    * @param MainFrame f
+    * @return nothing
+    */ 
     public void setWindow(MainFrame f){
         
         win = f;
     }
     
     
+    //TEST CLASSES FOR DEBUGGING ONLY
     
     //This function creates an internalFrame and adds it, to test that
     //internalframes are working properly
-    private void testFrame() {
+   /* private void testFrame() {
                 JInternalFrame intf = new JInternalFrame("Ventana",true,true,true,true);
                 intf.setPreferredSize(new Dimension(800, 640));
                 intf.setLocation(win.getWidth()/2-400, win.getHeight()/2-320);
@@ -321,7 +400,7 @@ public class MainController implements ActionListener{
         addCharge(c3);
         addCharge(c4);
         
-    }
+    }*/
 }
         
     
