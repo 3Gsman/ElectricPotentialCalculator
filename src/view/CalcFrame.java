@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package view;
 
 import control.CalcController;
@@ -19,10 +15,11 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JPanel;
 import javax.swing.JButton;
  
- 
 /**
- *
- * @author Pablo
+ *  @author ALTF4
+ *  @version 1
+ *  @see MainController MainFrame
+ *  This class basically displays a window to calculate the electric potential.
  */
 public final class CalcFrame extends JInternalFrame {
  
@@ -36,21 +33,28 @@ public final class CalcFrame extends JInternalFrame {
     public JLabel result;
     CalcController c;
    
+    /**
+     *  This is the class´s contstructor; its features are: Non resizable , closable and non maximizable.
+     * 
+     */
     public CalcFrame(){
        super("Calculate Potential",false,true,false);
        setDefaultCloseOperation(JInternalFrame.DISPOSE_ON_CLOSE);
     }
    
+    /**
+     *  This method basically displays the window with its components.
+     */
    public void crearVista(){
-       /*Aqui le doy tamaño, posicion inicial y visibilidad al internal frame
-         Nota a tener en cuenta: los internal frame necesitan tener el setPreferredSize para trabajar mejor con ellos
+       /*Here we give the window its size, initial position and visibility to the InternalFrame.
+         Keep in mind: InternalFrames work better with the setPreferredSize command.
        */
        this.setPreferredSize(new Dimension(450, 250));
        this.setSize(this.getPreferredSize());
        this.setLocation(50,30);
        this.setVisible(true);
    
-       //Aqui creo el panel que contiene los botones, los campos y las etiquetas y les doy su tamaño posicion etc
+       //Here we create the panel with the buttons, the text areas and the labels and we give them its size, position...
        JPanel panel = new JPanel();
        panel.setSize(450,300);
        panel.setLocation(0,0);
@@ -102,7 +106,7 @@ public final class CalcFrame extends JInternalFrame {
        fieldresult.setBounds(210,105,100,30);
        boton1.setBounds(170,160,100,30);
        
-       //Aqui simplemente los añado al panel
+       //Here we simply add the components to the panel
        panel.add(boton1);
        panel.add(fieldx);
        panel.add(fieldy);
@@ -113,7 +117,10 @@ public final class CalcFrame extends JInternalFrame {
        this.add(panel);
    }
  
-   
+   /**
+    * This method is used on the mainFrame to add its respective controller
+    * @param a 
+    */
    public void addController(CalcController a){
        
        this.c = a;
