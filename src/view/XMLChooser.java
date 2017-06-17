@@ -9,16 +9,21 @@ import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
- *
- * @author Daniel
+ * Selector for choosing XML files to load or add into the ArrayList in MainFrame.
+ * 
+ * @author ALTF4
+ * @version 1.0
+ * @see view.XMLChooser, MainController
  */
 public class XMLChooser extends JFileChooser {
     
-    
-    
-    
-    
-    
+    /**
+    * Constructor for the JFileChooser. Set XML files as the only type available,
+    * the chooser might not read directories.
+    * 
+    * @param nothing
+    * @return nothing
+    */
     public XMLChooser(){
         
         setCurrentDirectory(new java.io.File("."));
@@ -26,8 +31,5 @@ public class XMLChooser extends JFileChooser {
         setFileSelectionMode(JFileChooser.FILES_ONLY);
         setAcceptAllFileFilterUsed(false);
         setFileFilter(new FileNameExtensionFilter("*.xml", "xml"));
-    }
-
- 
-    
+    }   
 }

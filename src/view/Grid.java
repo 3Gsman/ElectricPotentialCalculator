@@ -11,27 +11,47 @@ import java.awt.Graphics;
 import javax.swing.JPanel;
 
 /**
- *
- * @author Daniel
+ * The grid reads draws the X and Y Axis, the marks, and the numbers on them,
+ * depending on the scale on the GraphicsController.
+ * 
+ * @author ALTF4
+ * @version 1.1
+ * @see control.GraphicsController, MainFrame
  */
 public class Grid extends JPanel {
    
     MainFrame win;
     GraphicsController gra;
     
-    
+    /**
+    * Constructor for the class. Adds the Mainframe and sets opaque to false.
+    * 
+    * @param MainFrame win
+    * @returns nothing
+    */
     Grid(MainFrame win){
         
         this.win = win;
         this.setOpaque(false);
     }
     
+    /**
+    * Adds a controller to the Grid
+    * 
+    * @param GraphicsController gra
+    * @returns nothing
+    */
     public void addController(GraphicsController gra){
         
         this.gra = gra;
         this.addMouseWheelListener(gra);
     }
- 
+    /**
+    * Depending on the scale, draws the X and Y axis, it's marks, and numbers.
+    * 
+    * @param Graphics g
+    * @returns nothing
+    */
     @Override
     public void paintComponent(Graphics g){
           
@@ -78,10 +98,12 @@ public class Grid extends JPanel {
 
     }   
 
-
-    
-    
-    //Two functions are created so we can work with doubles or ints
+    /**
+    * Prints numbers on the marks as doubles.
+    * 
+    * @param Graphics g, double r.
+    * @returns nothing
+    */
     public void printNumbers(Graphics g,double r){
         
         //This variable is created so the result may be truncated before print
@@ -112,6 +134,12 @@ public class Grid extends JPanel {
         
     }
     
+    /**
+    * Prints numbers on the marks as ints.
+    * 
+    * @param Graphics g, double r.
+    * @returns nothing
+    */
     public void printNumbers(Graphics g,int r){
         
         //Y Axis Numbers
@@ -127,5 +155,4 @@ public class Grid extends JPanel {
             
         }
     }
-  
 }

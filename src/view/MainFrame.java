@@ -1,7 +1,6 @@
 package view;
 
 import control.MainController;
-import java.awt.FlowLayout;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import javax.swing.JDesktopPane;
@@ -11,14 +10,17 @@ import javax.swing.JLayeredPane;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JPanel;
 import javax.swing.OverlayLayout;
 
 
 
 /**
- *
- * @author Daniel Vilar
+ * Holds the Grapher and Grid, showing the main graphical components, as well
+ * as the menu.
+ * 
+ * @author ALTF4
+ * @version 5.5
+ * @see control.MainController, Grapher, Grid
  */
 public class MainFrame extends JFrame {
     
@@ -32,6 +34,13 @@ public class MainFrame extends JFrame {
         private int w = 1200;
         
  
+        /**
+        * Constructor for the class. Sets the window's size, as well as some
+        * initialization parameters.
+        * 
+        * @param nothing
+        * @return nothing
+        */
    	public MainFrame() {
             
             super();
@@ -48,12 +57,24 @@ public class MainFrame extends JFrame {
 	}
     	
 
+        /**
+        * Adds a MainController to the Frame.
+        * 
+        * @param MainController c
+        * @return nothing
+        */
         public void addController(MainController c){
             
             this.c = c;
         }
         
-        
+        /**
+        * Create graphical elements present in the frame, sets it's parameters,
+        * and adds them.
+        * 
+        * @param nothing
+        * @return nothing
+        */
         public void create(){	
             
             JMenuBar menuBar;
@@ -183,29 +204,57 @@ public class MainFrame extends JFrame {
         }
         
         
-        
+        /**
+        * Sets the Frame's icon.
+        * 
+        * @param nothing
+        * @return nothing
+        */ 
         private void setIcon() {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/img/chargeLogo.png")));       
             
         }
         
 
-        
+        /**
+        * Getter method for the Frame's height.
+        * 
+        * @param nothing
+        * @return int h
+        */ 
         public int getH(){
             
             return h;
         }
         
+        /**
+        * Getter method for the Frame's width.
+        * 
+        * @param nothing
+        * @return int w
+        */ 
         public int getW(){
             
             return w;
         }
-
+        
+        /**
+        * Getter method for the Frame's Grapher JPanel.
+        * 
+        * @param nothing
+        * @return Grapher gra
+        */ 
         public Grapher getGrapher(){
             
             return gra;
         }
-        
+                
+        /**
+        * Getter method for the Frame's Grid JPanel.
+        * 
+        * @param nothing
+        * @return Grid gri
+        */ 
         public Grid getGrid(){
             
             return gri;
@@ -214,6 +263,14 @@ public class MainFrame extends JFrame {
         
         /*This method is the ONLY one that might be used to add a JInternalFrame,
         any other method will cause the program not to function as desired*/ 
+        
+        /**
+        * Replaces already existing JInternalFrame with the parameter, ensuring
+        * there's only one at any given time.
+        * 
+        * @param JInternalFrame j
+        * @return nothing
+        */
         public void addFrame(JInternalFrame i){
         
             this.getContentPane().remove(internal);
@@ -228,18 +285,15 @@ public class MainFrame extends JFrame {
         
         }
         
+        /**
+        * Checks if there's no InternalFrames saved in the Frame
+        * 
+        * @param nothing
+        * @return boolean
+        */
         public boolean internalIsEmpty() {
             
             return internal == null;
-        }
-        
-        public JDesktopPane getDesktop(){
-            
-            return (JDesktopPane)getContentPane();
-        }
-
-    public void addFrame() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        }              
             
 }
